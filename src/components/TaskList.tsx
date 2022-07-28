@@ -16,14 +16,44 @@ export function TaskList() {
 
   function handleCreateNewTask() {
     // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
+
+    if (newTaskTitle == '') {
+      alert('Informe a sua atividade');
+      return;
+    }
+    const newTask = {
+        id: tasks.length + 1,
+        title: newTaskTitle,    
+        isComplete: false
+    }
+    setTasks(antigoDados => [...antigoDados, newTask]);
   }
 
   function handleToggleTaskCompletion(id: number) {
     // Altere entre `true` ou `false` o campo `isComplete` de uma task com dado ID
+
+    const taskNaoRiscada = tasks.map(item =>{
+      if (item.id == id) {        
+        if(item.isComplete == true){
+          item.isComplete = false;          
+        }else if(item.isComplete == false){
+          item.isComplete = true;
+        }          
+      } 
+      return item;
+    })    
+    setTasks(taskNaoRiscada)  
   }
 
-  function handleRemoveTask(id: number) {
-    // Remova uma task da listagem pelo ID
+  function handleRemoveTask(idDelete : number) {
+    // Remova uma task da listagem pelo ID    
+    const taskUndeleted = tasks.filter(item =>{
+      return item.id !== idDelete;
+    })
+
+    setTasks(taskUndeleted);
+
+    
   }
 
   return (
@@ -34,7 +64,7 @@ export function TaskList() {
         <div className="input-group">
           <input 
             type="text" 
-            placeholder="Adicionar novo todo" 
+            placeholder="Adicionar novo todo"             
             onChange={(e) => setNewTaskTitle(e.target.value)}
             value={newTaskTitle}
           />
@@ -47,6 +77,7 @@ export function TaskList() {
       <main>
         <ul>
           {tasks.map(task => (
+            
             <li key={task.id}>
               <div className={task.isComplete ? 'completed' : ''} data-testid="task" >
                 <label className="checkbox-container">
@@ -58,7 +89,7 @@ export function TaskList() {
                   />
                   <span className="checkmark"></span>
                 </label>
-                <p>{task.title}</p>
+                <p> {task.id }| {task.title}</p>
               </div>
 
               <button type="button" data-testid="remove-task-button" onClick={() => handleRemoveTask(task.id)}>
