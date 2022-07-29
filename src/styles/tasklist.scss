@@ -1,5 +1,5 @@
 section.task-list {
-  background: var(--shapes);
+  background: var(--gray-100);
   border-radius: 1rem;
   
   margin-top: -10rem;
@@ -23,39 +23,42 @@ section.task-list {
       gap: 0.25rem;
       align-items: center;
 
-      background: #fff;
+      background: var(--gray-200);
       font-size: 16px;
       
       input {
         flex: 1;
-        background: var(--background);
+        background: var(--gray-400);
         border: 0;
         color: var(--text);
         padding: 12px 24px;
+        width: 500px ;
         
         border-radius: 8px;
         border: 0;
         
         &::placeholder {
-          color: var(--text-light)
+          color: white;
         }
       }
-
+      
       button {
         font-weight: 600;
         border-radius: 8px;
         border: 0;
-        background: var(--green);
+        background: var(--green-500);
         color: #fff;
         display: flex;
         flex-direction: row;
         align-items: center;
+        
 
         padding: 14px;
         transition: filter 0.2s;
 
         &:hover {
           filter: brightness(0.95);
+          background: var(--green-300);
         }
       }
     }
@@ -64,6 +67,12 @@ section.task-list {
   main {
     margin-top: 3rem;
 
+    .countTask{
+      display: flex;
+      justify-content: space-between;
+      color: #4ea8de
+    }
+
     ul {
       list-style: none;
   
@@ -71,7 +80,7 @@ section.task-list {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid #EBEBEB;
+        border-bottom: 3px solid #EBEBEB;
         padding: 1rem 0;
 
         div {
@@ -122,7 +131,7 @@ section.task-list {
               left: 0;
               width: 16px;
               height: 16px;
-              background-color: var(--background);
+              background-color: white;
               border-radius: 2px;
           
               &:after {

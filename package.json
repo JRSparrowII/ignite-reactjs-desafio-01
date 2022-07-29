@@ -9,6 +9,7 @@
     "test": "jest --watchAll"
   },
   "dependencies": {
+    "phosphor-react": "^1.4.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-icons": "^4.2.0"
