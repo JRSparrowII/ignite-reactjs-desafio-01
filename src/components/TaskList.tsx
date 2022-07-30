@@ -57,8 +57,6 @@ export function TaskList() {
     }
     setTasks(antigoDados => [...antigoDados, newTask]);
     // setNewTask('');
-    tasks.push(newTask)
-   
 
   }
 
