@@ -35,19 +35,19 @@ export function TaskList() {
 
   // FUNÇÃO DE EDITAR
 
-  function updateTask(id: number, newContent: string){
-    const newUpdateTask = tasks.find((task) => {
-      return task.id === id;
-    });
-    newUpdateTask.tasks = newContent;
-  }
+  // function updateTask(id: number, newContent: string){
+  //   const newUpdateTask = tasks.find((task) => {
+  //     return task.id === id;
+  //   });
+  //   newUpdateTask.tasks = newContent;
+  // }
   
 
   function handleCreateNewTask() {
     // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
 
     if (newTaskTitle == '') {
-      alert('Informe a sua atividade');
+      // alert('Informe a sua atividade');
       return;
     }
     const newTask = {
@@ -57,6 +57,8 @@ export function TaskList() {
     }
     setTasks(antigoDados => [...antigoDados, newTask]);
     // setNewTask('');
+    tasks.push(newTask)
+   
 
   }
 
@@ -94,7 +96,7 @@ export function TaskList() {
         <div className="input-group">
           <input 
             type="text" 
-            placeholder="Adicione uma nova tarefa"             
+            placeholder="Adicionar novo todo"             
             onChange={(e) => setNewTaskTitle(e.target.value)}
             value={newTaskTitle}
           />
@@ -124,15 +126,13 @@ export function TaskList() {
                   />
                   <span className="checkmark"></span>
                 </label>
-                <p> {task.id }| {task.title}</p>
+                <p> {task.title}</p>
               </div>
               <div>
                 <button type="button" data-testid="remove-task-button" onClick={() => handleRemoveTask(task.id)}>
                   <FiTrash size={16}/>
                 </button>
-                <button type="button" data-testid="remove-task-button" onClick={() => updateTask(task.id)}>
-                  <Pencil size={20}/>
-                </button>
+               
               </div>              
             </li>
           ))}
